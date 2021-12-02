@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EFCore.Product>
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h1>Product List</h1>
+<hr/>
+<table class="table">
+    <tr>
+        <th>Product Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Unit Price</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.UnitPrice</td>
+            <td>
+                <a asp-action="Create" asp-controller="Product">New</a>
+                <a asp-action="Update" asp-route-id="@item.ProductId" asp-controller="Product">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductId" asp-controller="Product">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
